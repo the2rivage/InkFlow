@@ -37,6 +37,7 @@ export class AuthService {
       });
     } catch (error) {
       console.log("Appwrite service :: login error :: ", error);
+      throw error;
     }
   }
   async getCurrUser() {
@@ -52,6 +53,7 @@ export class AuthService {
       return await this.account.deleteSessions();
     } catch (error) {
       console.log("Appwrite service :: logout error :: ", error);
+      throw error;
     }
   }
 }

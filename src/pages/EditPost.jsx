@@ -13,10 +13,11 @@ export default function EditPost() {
       }
     });
   }, [slug, navigate]);
+  
   return post ? (
     <div className="py-8">
       <Container>
-        <PostForm post={post}></PostForm>
+        <PostForm post={post} slug={slug}></PostForm>
       </Container>
     </div>
   ) : null;

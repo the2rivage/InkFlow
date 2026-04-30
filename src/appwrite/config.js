@@ -12,7 +12,15 @@ export class Service {
     this.tablesDB = new TablesDB(this.client);
     this.bucket = new Storage(this.client);
   }
-  async createPost({ title, slug, content, featuredImage, status, userID }) {
+  async createPost({
+    title,
+    slug,
+    content,
+    featuredImage,
+    status,
+    userID,
+    username,
+  }) {
     try {
       return await this.tablesDB.createRow({
         databaseId: conf.appwriteDatabaseId,
@@ -21,13 +29,15 @@ export class Service {
         data: {
           title,
           content,
-          featuredImage,
+          featuredImage: featuredImage || "placeholderImage123",
           status,
           userID,
+          username,
         },
       });
     } catch (error) {
       console.log("Appwrite servise :: create post :: error ", error);
+      throw error;
     }
   }
   async updatePost(slug, { title, content, featuredImage, status }) {
@@ -45,16 +55,16 @@ export class Service {
       );
     } catch (error) {
       console.log("Appwrite servise :: update post :: error ", error);
+      throw error;
     }
   }
   async deletePost(slug) {
     try {
-      await this.tablesDB.deleteRows(
-        conf.appwriteDatabaseId,
-        conf.appwriteCollectionId,
-        slug,
-        [this.Query.equal("status", "archived")],
-      );
+      await this.tablesDB.deleteRow({
+        databaseId: conf.appwriteDatabaseId,
+        tableId: conf.appwriteCollectionId,
+        rowId: slug,
+      });
       return true;
     } catch (error) {
       console.log("Appwrite servise :: delete post :: error ", error);
@@ -62,6 +72,7 @@ export class Service {
     }
   }
   async getPost(slug) {
+    console.log(slug);
     try {
       return await this.tablesDB.getRow({
         databaseId: conf.appwriteDatabaseId,
@@ -111,7 +122,7 @@ export class Service {
     }
   }
   getFilePreview(id) {
-    return this.bucket.getFilePreview({
+    return this.bucket.getFileView({
       bucketId: conf.appwriteBucketId,
       fileId: id,
     });
