@@ -72,7 +72,6 @@ export class Service {
     }
   }
   async getPost(slug) {
-    console.log(slug);
     try {
       return await this.tablesDB.getRow({
         databaseId: conf.appwriteDatabaseId,

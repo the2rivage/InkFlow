@@ -13,14 +13,13 @@ export default function AllPosts() {
         setPosts(posts.rows);
       }
     });
-  }, []);
+  }, [userData?.$id]);
 
   if (!userData) return null;
 
   return (
     <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 py-10 transition-colors duration-300">
       <Container>
-
         {/* Page Header */}
         <div className="mb-8 border-b border-gray-200 dark:border-gray-700 pb-4">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
@@ -54,7 +53,6 @@ export default function AllPosts() {
             ))}
           </div>
         )}
-
       </Container>
     </div>
   );

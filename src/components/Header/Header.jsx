@@ -1,7 +1,6 @@
-import { Container, Logo, LogoutBtn } from "../index";
+import { Container, Logo, LogoutBtn, ToggleButton } from "../index";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import ToggleButton from "../ToggleButton";
 
 export default function Header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -20,15 +19,12 @@ export default function Header() {
     <header className="bg-white dark:bg-gray-900/80 dark:backdrop-blur-md border-b border-gray-200 dark:border-gray-700 py-4 sticky top-0 z-50 transition-colors duration-300">
       <Container>
         <nav className="flex items-center">
-
           {/* Logo */}
           <div className="mr-6">
             <Link to="/">
               <Logo className="h-9 w-auto" />
             </Link>
           </div>
-
-          
 
           {/* Nav Links */}
           <ul className="flex ml-auto items-center gap-2">
@@ -47,7 +43,7 @@ export default function Header() {
                     {item.name}
                   </button>
                 </li>
-              ) : null
+              ) : null,
             )}
 
             {/* Logout */}
@@ -57,7 +53,7 @@ export default function Header() {
               </li>
             )}
             {/* Toggle */}
-          <ToggleButton />
+            <ToggleButton />
           </ul>
         </nav>
       </Container>
