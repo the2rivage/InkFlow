@@ -78,8 +78,8 @@ export class Service {
         tableId: conf.appwriteCollectionId,
         rowId: slug,
       });
-    } catch (error) {
-      console.log("Appwrite servise :: get post :: error ", error);
+    } catch {
+      // console.log("Appwrite servise :: get post :: error ", error);
       return false;
     }
   }
@@ -90,8 +90,8 @@ export class Service {
         tableId: conf.appwriteCollectionId,
         queries: queries,
       });
-    } catch (error) {
-      console.log("Appwrite servise :: list posts :: error ", error);
+    } catch  {
+      // console.log("Appwrite servise :: list posts :: error ", error);
       return false;
     }
   }

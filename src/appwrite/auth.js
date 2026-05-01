@@ -25,7 +25,7 @@ export class AuthService {
         return userAccount;
       }
     } catch (error) {
-      console.log("Appwrite service :: create account error :: ", error);
+      // console.log("Appwrite service :: create account error :: ", error);
       return error;
     }
   }
@@ -36,24 +36,24 @@ export class AuthService {
         password: password,
       });
     } catch (error) {
-      console.log("Appwrite service :: login error :: ", error);
-      throw error;
+      // console.log("Appwrite service :: login error :: ", error);
+      return error;
     }
   }
   async getCurrUser() {
     try {
       return this.account.get();
     } catch (error) {
-      console.log("Appwrite service :: get current user error :: ", error);
+      // console.log("Appwrite service :: get current user error :: ", error);
+      return error;
     }
-    return null;
   }
   async logout() {
     try {
       return await this.account.deleteSessions();
     } catch (error) {
-      console.log("Appwrite service :: logout error :: ", error);
-      throw error;
+      // console.log("Appwrite service :: logout error :: ", error);
+      return error;
     }
   }
 }
