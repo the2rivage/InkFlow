@@ -1,4 +1,4 @@
-import AddPost from "./Addpost";
+import AddPost from "./AddPost";
 import AllPosts from "./AllPosts";
 import EditPost from "./EditPost";
 import Home from "./Home";
