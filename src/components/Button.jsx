@@ -1,7 +1,5 @@
-import { ReducerType } from "@reduxjs/toolkit";
-
 export default function Button({
-  children, // text inside the button
+  children,  // text inside the button
   type = "button",
   bgColor = "bg-blue-600",
   textColor = "text-white",
@@ -10,8 +8,11 @@ export default function Button({
 }) {
   return (
     <button
-      className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${classname}`}
-      type={type} {...props}
-    >{children}</button>
+      className={`px-4 py-2 rounded-2xl ${bgColor} ${textColor} ${classname}`}
+      type={type}
+      {...props}
+    >
+      {children}
+    </button>
   );
 }
