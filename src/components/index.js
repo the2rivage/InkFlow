@@ -13,7 +13,9 @@ import PostForm from "./post-form/PostForm";
 import PostCard from "./PostCard";
 import AuthLayout from "./AuthLayout";
 import ToggleButton from "./ToggleButton/ToggleButton";
+import SocialIcons from "./SocialIcons";
 export {
+  SocialIcons,
   ToggleButton,
   AuthLayout,
   Header,
