@@ -33,7 +33,7 @@ export default function Header() {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className={`px-4 py-2 rounded-full text-md font-medium transition-all duration-200
+                    className={`px-4 py-2 rounded-full text-md font-medium transition-all duration-200 md:px-3 md:py-1.5 sm:px-2 sm:py-1.5
                       ${
                         location.pathname === item.slug
                           ? "bg-indigo-600 text-white shadow-md"
